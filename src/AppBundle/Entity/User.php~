@@ -29,4 +29,38 @@ class User extends BaseUser
         $this->userStores = new ArrayCollection();
     }
 
+
+    /**
+     * Add userStore
+     *
+     * @param \AppBundle\Entity\UserStore $userStore
+     *
+     * @return User
+     */
+    public function addUserStore(\AppBundle\Entity\UserStore $userStore)
+    {
+        $this->userStores[] = $userStore;
+
+        return $this;
+    }
+
+    /**
+     * Remove userStore
+     *
+     * @param \AppBundle\Entity\UserStore $userStore
+     */
+    public function removeUserStore(\AppBundle\Entity\UserStore $userStore)
+    {
+        $this->userStores->removeElement($userStore);
+    }
+
+    /**
+     * Get userStores
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUserStores()
+    {
+        return $this->userStores;
+    }
 }

@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Store
 {
-    /**fosuserbundle localization
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -20,7 +20,7 @@ class Store
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
+    
     /**
      * @var string
      *

@@ -12,13 +12,21 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class UserStore
 {
-   
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="action", type="string", length=255)
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $action;
+    private $id;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="rate", type="boolean")
+     */
+    private $rate;
 
     /**
      * @var \DateTime
@@ -33,9 +41,8 @@ class UserStore
      * @ORM\Column(name="updatedAt", type="datetime")
      */
     private $updatedAt;
-
+    
     /**
-     * @ORM\Id
      * @ORM\ManyToOne(targetEntity="User", inversedBy="userStores" )
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id",onDelete="CASCADE")
      *
@@ -43,7 +50,6 @@ class UserStore
     private $user;
     
     /**
-     * @ORM\Id
      * @ORM\ManyToOne(targetEntity="Store", inversedBy="userStores" )
      * @ORM\JoinColumn(name="shop_id", referencedColumnName="id",onDelete="CASCADE")
      *
@@ -51,13 +57,37 @@ class UserStore
     private $store;
 
     /**
-     * Get action
+     * Get id
      *
-     * @return string
+     * @return int
      */
-    public function getAction()
+    public function getId()
     {
-        return $this->action;
+        return $this->id;
+    }
+
+    /**
+     * Set rate
+     *
+     * @param boolean $rate
+     *
+     * @return UserStore
+     */
+    public function setRate($rate)
+    {
+        $this->rate = $rate;
+
+        return $this;
+    }
+
+    /**
+     * Get rate
+     *
+     * @return bool
+     */
+    public function getRate()
+    {
+        return $this->rate;
     }
 
     /**
@@ -107,7 +137,5 @@ class UserStore
     {
         return $this->updatedAt;
     }
-    
-    
 }
 

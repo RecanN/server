@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * UserStore
+ * Rating
  *
- * @ORM\Table(name="user_store")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\UserStoreRepository")
+ * @ORM\Table(name="rating")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\RatingRepository")
  */
-class UserStore
+class Rating
 {
     /**
      * @var int
@@ -71,7 +71,7 @@ class UserStore
      *
      * @param boolean $rate
      *
-     * @return UserStore
+     * @return Rating
      */
     public function setRate($rate)
     {
@@ -95,7 +95,7 @@ class UserStore
      *
      * @param \DateTime $createdAt
      *
-     * @return UserStore
+     * @return Rating
      */
     public function setCreatedAt($createdAt)
     {
@@ -119,7 +119,7 @@ class UserStore
      *
      * @param \DateTime $updatedAt
      *
-     * @return UserStore
+     * @return Rating
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -143,7 +143,7 @@ class UserStore
      *
      * @param \AppBundle\Entity\User $user
      *
-     * @return UserStore
+     * @return Rating
      */
     public function setUser(\AppBundle\Entity\User $user = null)
     {
@@ -167,7 +167,7 @@ class UserStore
      *
      * @param \AppBundle\Entity\Store $store
      *
-     * @return UserStore
+     * @return Rating
      */
     public function setStore(\AppBundle\Entity\Store $store = null)
     {

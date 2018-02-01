@@ -62,6 +62,14 @@ class Store
     private $userStore;
     
     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->userStore = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
      * Get id
      *
      * @return int
@@ -190,5 +198,38 @@ class Store
     {
         return $this->updatedAt;
     }
-}
 
+    /**
+     * Add userStore
+     *
+     * @param \AppBundle\Entity\UserStore $userStore
+     *
+     * @return Store
+     */
+    public function addUserStore(\AppBundle\Entity\UserStore $userStore)
+    {
+        $this->userStore[] = $userStore;
+
+        return $this;
+    }
+
+    /**
+     * Remove userStore
+     *
+     * @param \AppBundle\Entity\UserStore $userStore
+     */
+    public function removeUserStore(\AppBundle\Entity\UserStore $userStore)
+    {
+        $this->userStore->removeElement($userStore);
+    }
+
+    /**
+     * Get userStore
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUserStore()
+    {
+        return $this->userStore;
+    }
+}
