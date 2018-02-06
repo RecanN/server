@@ -31,8 +31,8 @@ security:
             stateless: true
             guard:
                 authenticators:
-                    - jwt_token_authenticator
-                    #- lexik_jwt_authentication.jwt_token_authenticator
+                    #- jwt_token_authenticator
+                    - lexik_jwt_authentication.jwt_token_authenticator
         
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
