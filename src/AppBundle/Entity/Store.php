@@ -20,7 +20,7 @@ class Store
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    
+
     /**
      * @var string
      *
@@ -56,19 +56,19 @@ class Store
      */
     private $updatedAt;
 
-     /**
+    /**
      * @ORM\OneToMany(targetEntity="UserStore", mappedBy ="store")
      */
-    private $userStore;
-    
+    private $userStores;
+
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->userStore = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->userStores = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     /**
      * Get id
      *
@@ -200,6 +200,40 @@ class Store
     }
 
     /**
+     * Add userStores
+     *
+     * @param \AppBundle\Entity\UserStore $userStores
+     *
+     * @return Store
+     */
+    public function addUserStores(\AppBundle\Entity\UserStore $userStores)
+    {
+        $this->userStores[] = $userStores;
+
+        return $this;
+    }
+
+    /**
+     * Remove userStores
+     *
+     * @param \AppBundle\Entity\UserStore $userStores
+     */
+    public function removeUserStores(\AppBundle\Entity\UserStore $userStores)
+    {
+        $this->userStores->removeElement($userStores);
+    }
+
+    /**
+     * Get userStores
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUserStores()
+    {
+        return $this->userStores;
+    }
+
+    /**
      * Add userStore
      *
      * @param \AppBundle\Entity\UserStore $userStore
@@ -207,8 +241,8 @@ class Store
      * @return Store
      */
     public function addUserStore(\AppBundle\Entity\UserStore $userStore)
-    {
-        $this->userStore[] = $userStore;
+    {// TODO: Implement __toString() method.
+        $this->userStores[] = $userStore;
 
         return $this;
     }
@@ -220,16 +254,11 @@ class Store
      */
     public function removeUserStore(\AppBundle\Entity\UserStore $userStore)
     {
-        $this->userStore->removeElement($userStore);
+        $this->userStores->removeElement($userStore);
     }
 
-    /**
-     * Get userStore
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getUserStore()
+    public function __toString()
     {
-        return $this->userStore;
+        return $this->name;
     }
 }
