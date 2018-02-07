@@ -61,7 +61,6 @@ $ openssl genrsa -out var/jwt/private.pem -aes256 4096
 $ openssl rsa -pubout -in var/jwt/private.pem -out var/jwt/public.pem
 ```
 
-See also the documentation for LexikJWTAuthenticationBundle :
-[GitHub](https://github.com/lexik/LexikJWTAuthenticationBundle)
+See also the documentation for [LexikJWTAuthenticationBundle](https://github.com/lexik/LexikJWTAuthenticationBundle)
 
 A Symfony project created on January 31, 2018, 6:18 pm.
