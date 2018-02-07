@@ -34,8 +34,6 @@ class StoreRate {
             $userStore->setCreatedAt(new \DateTime("now"));
             $userStore->setUpdatedAt(new \DateTime("now"));
 
-
-
             $this->em->persist($userStore);
             $this->em->flush();
         }
