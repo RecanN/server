@@ -10,4 +10,14 @@ namespace AppBundle\Repository;
  */
 class StoreRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findAllStores(){
+        $dql = $this->createQueryBuilder('s')
+            ->select('s.name','s.image','s.description')
+        ;
+        $query = $dql->getQuery();
+
+        return $query->execute();
+    }
+
+
 }

@@ -10,4 +10,16 @@ namespace AppBundle\Repository;
  */
 class UserStoreRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findStoresLiked($user){
+        $dql = $this->createQueryBuilder('us')
+            ->innerJoin('us.store', 'st')
+            ->select('us.id','us.rate','st.id')
+            ->where('us.rate = 1')
+            ->andWhere('us.user = :user')
+            ->setParameter('user', $user)
+        ;
+        $query = $dql->getQuery();
+
+        return $query->execute();
+    }
 }
