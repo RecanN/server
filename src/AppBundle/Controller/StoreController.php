@@ -61,7 +61,7 @@ class StoreController extends Controller{
         $action = $data['rate'];
         $user = $this->getUser();
         $service = $this->get('store.rate')->rateStore($action, $rate->getStore(), $user);
-        return new Response('', Response::HTTP_CREATED);return 'khdeeemt !! ';
+        return new Response('', Response::HTTP_CREATED);
     }
 
 
