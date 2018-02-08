@@ -57,7 +57,6 @@ class StoreController extends Controller{
         $str = $request->getContent(); //data as a String Format
         $data = json_decode( $str,true); //data as Array
         $rate = $this->get('jms_serializer')->deserialize($str, 'AppBundle\Entity\UserStore', 'json');
-        //var_dump($rate); die;
         $action = $data['rate'];
         $user = $this->getUser();
         $service = $this->get('store.rate')->rateStore($action, $rate->getStore(), $user);
