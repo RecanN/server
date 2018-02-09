@@ -49,10 +49,21 @@ Config your own passphrase and ttl (for token expiration)
 ```yaml
 # app/config/config.yml
 ...
+lexik_jwt_authentication:
+    private_key_path: '%jwt_private_key_path%'
+    public_key_path:  '%jwt_public_key_path%'
+    pass_phrase:      '%jwt_key_pass_phrase%'
+    token_ttl:        '%jwt_token_ttl%'
+```  
+Config your parameters
+```yaml
+# app/config/parameters.yml
+...
 parameters:
-    locale: en
-    jwt_passphrase: passphrase
-    jwt_token_ttl: 36000 #in seconds
+    jwt_private_key_path: '%kernel.root_dir%/../var/jwt/private.pem' # ssh private key path
+    jwt_public_key_path:  '%kernel.root_dir%/../var/jwt/public.pem'  # ssh public key path
+    jwt_key_pass_phrase:  ''                                         # ssh key pass phrase
+    jwt_token_ttl:        3600                                       # 3600 sec = 1 hour
 ```  
 Generate the SSH keys : 
 ```
