@@ -45,7 +45,13 @@ $ bin/console doctrine:schema:update --force
 ```
 
 ### JWT configuration :
-Config your own passphrase and ttl (for token expiration)
+Generate the SSH keys : 
+```
+$ mkdir -p var/jwt # For Symfony3+, no need of the -p option
+$ openssl genrsa -out var/jwt/private.pem -aes256 4096
+$ openssl rsa -pubout -in var/jwt/private.pem -out var/jwt/public.pem
+```
+Configure the SSH keys path in your config.yml :
 ```yaml
 # app/config/config.yml
 ...
@@ -55,7 +61,7 @@ lexik_jwt_authentication:
     pass_phrase:      '%jwt_key_pass_phrase%'
     token_ttl:        '%jwt_token_ttl%'
 ```  
-Config your parameters
+Configure your parameters.dist :
 ```yaml
 # app/config/parameters.yml
 ...
@@ -65,12 +71,6 @@ parameters:
     jwt_key_pass_phrase:  ''                                         # ssh key pass phrase
     jwt_token_ttl:        3600                                       # 3600 sec = 1 hour
 ```  
-Generate the SSH keys : 
-```
-$ mkdir -p var/jwt # For Symfony3+, no need of the -p option
-$ openssl genrsa -out var/jwt/private.pem -aes256 4096
-$ openssl rsa -pubout -in var/jwt/private.pem -out var/jwt/public.pem
-```
 
 See also the documentation for [LexikJWTAuthenticationBundle](https://github.com/lexik/LexikJWTAuthenticationBundle)
 
