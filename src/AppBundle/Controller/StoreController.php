@@ -50,7 +50,7 @@ class StoreController extends Controller{
     }
 
     /**
-     * @Route("/rate", name="rate")
+     * @Route("/rate/{id}", name="rate")
      * @Method({"DELETE", "POST", "PUT"})
      */
     public function rateAction(Request $request){
@@ -59,7 +59,8 @@ class StoreController extends Controller{
         $rate = $this->get('jms_serializer')->deserialize($str, 'AppBundle\Entity\UserStore', 'json');
         $action = $data['rate'];
         $user = $this->getUser();
-        $service = $this->get('store.rate')->rateStore($action, $rate->getStore(), $user);
+        $store = $request->get('id');
+        $service = $this->get('store.rate')->rateStore($action,$store, $user);
         return new Response('', Response::HTTP_CREATED);
     }
 

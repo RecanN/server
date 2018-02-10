@@ -51,7 +51,7 @@ class UserStore
     
     /**
      * @ORM\ManyToOne(targetEntity="Store", inversedBy="userStores", cascade={"persist"}) )
-     * @ORM\JoinColumn(name="shop_id", referencedColumnName="id",onDelete="CASCADE")
+     * @ORM\JoinColumn(name="store_id", referencedColumnName="id",onDelete="CASCADE")
      *
      */
     private $store;

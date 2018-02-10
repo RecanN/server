@@ -22,10 +22,9 @@ class StoreRate {
         return $userStores;
     }
 
-    public function rateStore($action, Store $store,User $user){
-
-        $check = $this->checkIsRated($user, $store);
-
+    public function rateStore($action, $store ,User $user){
+        $check = $this->checkIsRated($user,$store, $store);
+        $store = $this->em->getRepository(Store::class)->find($store);
         if(!$check){
             $userStore = new UserStore();
             $userStore->setRate($action);
@@ -33,7 +32,6 @@ class StoreRate {
             $userStore->setStore($store);
             $userStore->setCreatedAt(new \DateTime("now"));
             $userStore->setUpdatedAt(new \DateTime("now"));
-
             $this->em->persist($userStore);
             $this->em->flush();
         }
@@ -51,7 +49,7 @@ class StoreRate {
         }
     }
 
-    public function checkIsRated(User $user, Store $store){
+    public function checkIsRated(User $user,$store){
         $rate= $this->em->getRepository('AppBundle:UserStore')
             ->findOneBy(['store' =>$store ,'user' => $user ]);
 
