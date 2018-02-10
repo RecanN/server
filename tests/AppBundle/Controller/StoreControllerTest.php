@@ -11,5 +11,4 @@ namespace Tests\AppBundle\Controller;
 
 class StoreControllerTest
 {
-
 }
